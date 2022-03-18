@@ -1,0 +1,14 @@
+a {
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover {
+    transition: color 0.3s;
+    color: coral;
+}
+
+a:active {
+    color: darkcyan;
+}
