@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title TBD - CSRF</title>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="main">
+        Cross Site Request Forgeries
+
+        被害者が罠のサイトを閲覧
+        ↓
+        罠のサイトから正しいサイトにパスワード変更のリクエストを飛ばす
+        そのときに、正しいセッション情報を使用してリクエストを行う
+
+        対策
+        CSRFトークン
+        SameSite=Laxに設定する
+        Refererをチェックする
+        Double Submit Cookieで対策する
+    </div>
+    <footer class="footer"></footer>
+</body>
+
+</html>
