@@ -11,6 +11,70 @@
 <body>
     <header class="header"></header>
     <div class="main">
+        <div>
+            <p>参考</p>
+            <ul>
+                <li>
+                    <a href="https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_5.html" target="_blank">
+                        IPA: クロスサイト・スクリプティング
+                    </a>
+                </li>
+                <li>
+                    <a href="https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/X-XSS-Protection" target="_blank">
+                        X-XSS-Protection
+                    </a>
+                </li>
+                <li>
+                    <a href="https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Content-Security-Policy" target="_blank">
+                        Content-Security-Policy
+                    </a>
+                </li>
+                <li>体系的に学ぶ 安全なWebアプリケーションの作り方 第2版</li>
+            </ul>
+        </div>
+        <div>
+            <p>攻撃方法</p>
+            <ol>
+                <li>罠サイトに誘導するパターン</li>
+                <li>脆弱性のあるサイトに攻撃用スクリプトを仕込むパターン</li>
+            </ol>
+        </div>
+        <div>
+            <p>対策方法</p>
+            <ol>
+                <li>HTMLのエスケープ</li>
+                <div>
+                    ウェブページの本文やHTMLタグの属性値等に相当する全ての出力要素にエスケープ処理を行います。
+                </div>
+                <li>URLのプロトコルを制限する</li>
+                <div>
+                    URLを出力するときは、「http://」か「https://」で始まるURLのみを許可し「javascript:」などを使用できないように制限します。
+                </div>
+                <li>HTTPレスポンスヘッダのContent-Typeに文字コードを指定する。</li>
+                <div>
+                    Webアプリケーションが使用している文字エンコーディングとブラウザが使用している文字エンコーディングが異なるとXSSの原因になる場合がある。<br />
+                    詳しくは、「IPA: 安全なウェブサイトの作り方 - 1.5 クロスサイト・スクリプティング 5-(viii) HTTPレスポンスヘッダのContent-Typeフィールドに文字コード（charset）を指定する。」を参照。
+                </div>
+            </ol>
+            <p>保険的対策</p>
+            <ol>
+                <li>ユーザーの入力値を検証する</li>
+                <div>
+                    ユーザーの入力値が仕様に沿うものかを検証する処理を追加する。<br/>
+                    仕様に合わない場合はエラーとし、再入力させる。<br />
+                    入力値検証によるXSS対策は、入力値が英数字のみなどの場合は有効だが、入力値が自由の場合は機能しない。
+                </div>
+                <li>クッキーにHttpOnly属性を付与する</li>
+                <div>
+                    クッキーの属性であるHttpOnly属性を付与することでJavaScriptからのクッキーの読み出しを禁止する。
+                    XSS攻撃によるセッションIDの盗み出しを防止できるが他の攻撃手法に関しては防ぐことはできない。
+                </div>
+                <li>XSS対策として有効なブラウザ機能を有効にするレスポンスヘッダを返す</li>
+                <div>
+                    X-XSS-Protection, Content Security Policyを有効にするヘッダーを返却する。
+                </div>
+            </ol>
+        </div>
     </div>
     <footer class="footer"></footer>
 </body>
